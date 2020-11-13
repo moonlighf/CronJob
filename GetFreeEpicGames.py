@@ -95,10 +95,12 @@ class GetFreeEpicGames:
     def run_task(self, is_bark_notice, bark_api):
         # 获取免费游戏信息
         self.get_free_game_info()
-        print("----------本次是否启用Bark推送：{}----------".format(is_bark_notice))
         # 用户推送信息
-        #if is_bark_notice == "yes":
-        self.bark_notice(bark_api)
+        if is_bark_notice == "yes":
+            print("----------本次启用Bark推送----------")
+            self.bark_notice(bark_api)
+        else:
+            print("----------本次未启用Bark推送----------")
 
 
 if __name__ == '__main__':
