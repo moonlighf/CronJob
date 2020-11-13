@@ -1,6 +1,11 @@
 name: Python Package using Conda
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 10 * * 4'
 
 jobs:
   epic_game:
@@ -18,4 +23,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade requests retrying
       - name: 'start run epic'
+        env:
+          NETEASE_USERNAME: ${{ secrets.IS_MOBILE_NOTICE }}
+          NETEASE_PASSWORD: ${{ secrets.BARK_API }}
         run: python GetFreeEpicGames.py
