@@ -29,7 +29,7 @@ class GetFreeEpicGames:
     def convert_time_to_cn_time(old_time):
         standard_old_time = old_time.replace("T", " ").replace("Z", "").replace(".000", "")
         standard_cn_time = (datetime.strptime(standard_old_time, "%Y-%m-%d %H:%M:%S") + timedelta(hours=20)).strftime(
-            "%Y-%m-%dT%H:%M:%S")
+            "%Y-%m-%d %H:%M:%S")
         return standard_cn_time
 
     @retry(stop_max_attempt_number=3, wait_random_min=3000, wait_random_max=4000)
@@ -97,8 +97,8 @@ class GetFreeEpicGames:
         self.get_free_game_info()
         print("----------本次是否启用Bark推送：{}----------".format(is_bark_notice))
         # 用户推送信息
-        if is_bark_notice == "yes":
-            self.bark_notice(bark_api)
+        #if is_bark_notice == "yes":
+        self.bark_notice(bark_api)
 
 
 if __name__ == '__main__':
