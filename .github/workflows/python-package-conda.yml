@@ -26,4 +26,4 @@ jobs:
         env:
           IS_MOBILE_NOTICE: ${{ secrets.IS_MOBILE_NOTICE }}
           BARK_API: ${{ secrets.BARK_API }}
-        run: python GetFreeEpicGames.py
+        run: python ./epic_game/GetFreeEpicGames.py
