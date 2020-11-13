@@ -53,6 +53,7 @@ class GetFreeEpicGames:
             sys.exit(-1)
         # 解析
         games = json_data["data"]["Catalog"]["searchStore"]["elements"]
+        print("----------开始获取最近的免费游戏名称----------")
         for game in games:
             game_tile = game["title"]
             # 区分正在限免和非正在限免
@@ -71,6 +72,7 @@ class GetFreeEpicGames:
                 "start_time": start_cn_time,
                 "end_time": end_cn_time
             }
+            print('【{}】\n【游戏开始领取时间】{}\n【游戏结束领取时间】{}\n'.format(game_tile, start_cn_time, end_cn_time))
 
     def get_free_game_info(self):
         free_games_url = "https://store-site-backend-static.ak.epicgames.com/" \
@@ -93,6 +95,7 @@ class GetFreeEpicGames:
     def run_task(self, is_bark_notice, bark_api):
         # 获取免费游戏信息
         self.get_free_game_info()
+        print("----------本次是否启用Bark推送：{}----------".format(is_bark_notice))
         # 用户推送信息
         if is_bark_notice == "yes":
             self.bark_notice(bark_api)
