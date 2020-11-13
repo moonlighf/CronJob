@@ -29,7 +29,7 @@ class GetFreeEpicGames:
     def convert_time_to_cn_time(old_time):
         standard_old_time = old_time.replace("T", " ").replace("Z", "").replace(".000", "")
         standard_cn_time = (datetime.strptime(standard_old_time, "%Y-%m-%d %H:%M:%S") + timedelta(hours=20)).strftime(
-            "%Y-%m-%d %H:%M:%S")
+            "%Y.%m.%d %H:%M")
         return standard_cn_time
 
     @retry(stop_max_attempt_number=3, wait_random_min=3000, wait_random_max=4000)
@@ -84,12 +84,12 @@ class GetFreeEpicGames:
             pass
 
     def bark_notice(self, bark_api):
-        notice_text = bark_api + 'EPIC本周免费游戏:/'
+        notice_text = bark_api + '❤EPIC本周免费游戏领取:/'
         for game_title, game_info in self.games_info.items():
-            notice_text = notice_text + '【{}】\n【游戏开始领取时间】{}\n【游戏结束领取时间】{}\n'.format(
+            notice_text = notice_text + '☎【{}】\n\t开始时间：{}\n\t结束时间：{}\n'.format(
                 game_title, game_info["start_time"], game_info["end_time"])
         # 去掉最后一个多余的\n
-        notice_text = notice_text[:-2]
+        notice_text = notice_text[:-1] + '?url=https://www.epicgames.com/store/zh-CN/free-games'
         requests.get(notice_text)
 
     def run_task(self, is_bark_notice, bark_api):
@@ -99,8 +99,6 @@ class GetFreeEpicGames:
         if is_bark_notice == "yes":
             print("----------本次启用Bark推送----------")
             self.bark_notice(bark_api)
-        else:
-            print("----------本次未启用Bark推送----------")
 
 
 if __name__ == '__main__':
