@@ -3,7 +3,8 @@
 
 ### [1.GetFreeEpicGames](https://github.com/moonlighf/CronJob/tree/main/epic_game)
 &#8195;获取Epic的[每周免费游戏资讯](https://www.epicgames.com/store/en-US/free-games)，并实现游戏的自动领取入库 **（默认关闭，如果开启推荐用小号，防止垃圾游戏污染游戏库）**
-![image](https://github.com/moonlighf/CronJob/tree/main/epic_game/images/nongshalie.jpg)
+
+![image](https://github.com/moonlighf/CronJob/tree/main/epic_game/images/epic.jpg)
 #### Secrets设定参数解释
 - IS_MOBILE_NOTICE：是否选用Bark统一推送（yes/no）
 - BARK_API：自己的Bark的API地址
