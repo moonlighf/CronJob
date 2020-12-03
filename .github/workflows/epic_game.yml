@@ -1,11 +1,8 @@
 name: Python Package using Conda
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: '0 10 * * 4'
+    - cron: '0 4 * * 4'
 
 jobs:
   epic_game:
