@@ -21,7 +21,8 @@ jobs:
           node-version: 10.x
       - name: npm install
         run: |
-          npm install
+          cd ./qq_read
+          npm install || npm install --registry=https://registry.npm.taobao.org
           npm install got #tough-cookie
       - name: ' 运行 【企鹅阅读】'
         run: |
