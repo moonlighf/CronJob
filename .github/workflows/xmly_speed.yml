@@ -3,6 +3,7 @@ name: xmly_speed
 on:
   schedule:
     - cron: '*/30 * * * *'
+  workflow_dispatch:
 
 jobs:
   xmly_speed:
