@@ -8,9 +8,6 @@ on:
 jobs:
   xmly_speed:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 5
-
     steps:
       - name: 'Checkout codes'
         uses: actions/checkout@v2
@@ -21,7 +18,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r ./xmly_speed/requirements.txt
       - name: 'start run xmly_speed'
-        env:
-          XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}
-          BARK: ${{ secrets.BARK }}
         run: python ./xmly_speed/xmly_speed.py
+        env:
+            XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须
+            BARK: ${{ secrets.BARK }}     # bark服务
+            SCKEY: ${{ secrets.SCKEY }}   # server酱服务
+            TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}} # tg通知token
+            TG_USER_ID:  ${{secrets.TG_USER_ID}}    # tg通知id      
