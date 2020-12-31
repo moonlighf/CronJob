@@ -22,6 +22,6 @@ jobs:
         run: pip install -r ./xmly_speed/requirements.txt
       - name: 'start run xmly_speed'
         env:
-          IS_MOBILE_NOTICE: ${{ secrets.XMLY_SPEED_COOKIE }}
-          BARK_API: ${{ secrets.BARK_API }}
+          XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}
+          BARK: ${{ secrets.BARK }}
         run: python ./xmly_speed/xmly_speed.py
