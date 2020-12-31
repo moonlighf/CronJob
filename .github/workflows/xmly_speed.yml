@@ -3,8 +3,6 @@ name: xmly_speed
 on:
   schedule:
     - cron: '*/30 * * * *'
-  watch:
-    types: [started]
 
 jobs:
   xmly_speed:
