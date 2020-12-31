@@ -7,7 +7,7 @@ on:
     types: [started]
 
 jobs:
-  epic_game:
+  xmly_speed:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 5
